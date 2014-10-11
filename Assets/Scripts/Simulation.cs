@@ -12,15 +12,16 @@ public class Simulation : MonoBehaviour {
 			return isRunningStorage;
 		}
 		set {
+			isRunningStorage = value;
 			if (value) {
 				Time.timeScale = 1;
 				camera.cullingMask = ~0;
+				Debug.Log ("GO!");
 				StartSimulation ();
 			} else {
 				Time.timeScale = 0;
 				camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 			}
-			isRunningStorage = value;
 		}
 	}
 	public bool isReset = true;
@@ -92,6 +93,7 @@ public class Simulation : MonoBehaviour {
 			Rigidbody2D body = player.GetComponent<Rigidbody2D>();
 			foreach (GameObject attractor in attractors) {
 				Vector2 dir = (attractor.transform.position - player.transform.position).normalized;
+				dir = attractor.GetComponent<GravitySource>().GetGravityForce( player.transform.position, 10 );
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[attractor.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
@@ -100,6 +102,7 @@ public class Simulation : MonoBehaviour {
 
 			foreach (GameObject repeller in repellers) {
 				Vector2 dir = -(repeller.transform.position - player.transform.position).normalized;
+				dir = repeller.GetComponent<GravitySource>().GetGravityForce( player.transform.position, 10 );
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[repeller.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
