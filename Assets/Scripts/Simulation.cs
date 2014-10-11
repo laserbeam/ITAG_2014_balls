@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Simulation : MonoBehaviour {
 
 	public GameObject forceArrowPrefab;
-
+	
 	private bool isRunningStorage = false;
 	public bool isRunning {
 		get {
@@ -23,6 +23,7 @@ public class Simulation : MonoBehaviour {
 			isRunningStorage = value;
 		}
 	}
+	public bool isReset = true;
 
 	private GameObject[] attractors;
 	private GameObject[] repellers;
@@ -38,11 +39,15 @@ public class Simulation : MonoBehaviour {
 	}
 
 	void StartSimulation () {
-		player.GetComponent<Rigidbody2D>().AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
+		if (isReset) {
+			player.GetComponent<Rigidbody2D>().AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
+			isReset = false;
+		}
 	}
 
 	public void ResetSimulation () {
 		isRunning = false;
+		isReset = true;
 		player.transform.position = initialPlayerPosition;
 		player.transform.rotation = initialPlayerRotation;
 		player.transform.localScale = initialPlayerScale;
