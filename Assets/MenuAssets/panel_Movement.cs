@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move_panels : MonoBehaviour {
+public class panel_Movement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
