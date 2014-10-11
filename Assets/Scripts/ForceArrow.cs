@@ -14,7 +14,6 @@ public class ForceArrow : MonoBehaviour {
 			return forceStorage;
 		}
 		set {
-			Debug.Log ("CALLED " + value);
 			forceStorage = value;
 			lineRenderer.SetPosition ( 1, new Vector3 ( value.x, value.y ));
 		}

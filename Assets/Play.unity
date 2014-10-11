@@ -83,8 +83,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 69892499}
   - 212: {fileID: 69892498}
-  - 114: {fileID: 69892497}
   - 58: {fileID: 69892496}
+  - 114: {fileID: 69892497}
   m_Layer: 0
   m_Name: Repeller
   m_TagString: Repeller
@@ -101,7 +101,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .444999993
+  m_Radius: 4.61000013
   m_Center: {x: 0, y: 0}
 --- !u!114 &69892497
 MonoBehaviour:
@@ -111,9 +111,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 69892495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e04ee2abe6444ad90011b73b54f0c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae7b49821d20408ba07be55581c9ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mass: 10
+  attracts: 0
 --- !u!212 &69892498
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a326d8d0f4f05430ca8d54ddb74eec5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a90138252353a4278aa2ce37577e7336, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &69892499
 Transform:
@@ -144,7 +146,7 @@ Transform:
   m_GameObject: {fileID: 69892495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.03789997, y: 3.57599998, z: 0}
-  m_LocalScale: {x: 3.41065669, y: 3.41065669, z: 3.41065669}
+  m_LocalScale: {x: .23083204, y: .230832085, z: .230832085}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -208,11 +210,11 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377636776}
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -331,6 +333,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &716993950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 716993953}
+  - 212: {fileID: 716993952}
+  - 61: {fileID: 716993951}
+  m_Layer: 0
+  m_Name: Spring
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &716993951
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716993950}
+  m_Enabled: 1
+  m_Material: {fileID: 6200000, guid: efc3000e8371d4e89b45d7cf018a6905, type: 2}
+  m_IsTrigger: 0
+  m_Size: {x: .699999988, y: .400000006}
+  m_Center: {x: 0, y: .150000006}
+--- !u!212 &716993952
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716993950}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 9fa8a8beeebba43259962d99f806a94f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &716993953
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 716993950}
+  m_LocalRotation: {x: 0, y: 0, z: .105179943, w: .994453251}
+  m_LocalPosition: {x: 2.2421999, y: -2.70630002, z: 0}
+  m_LocalScale: {x: 6.51814651, y: 2.39415121, z: 2.39415121}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &833115365
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,7 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebf72f53b7374b659a2860737afc3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneSizeW: 18
+  sceneSizeW: 16
   sceneSizeH: 9.60000038
 --- !u!114 &833115372
 MonoBehaviour:
@@ -606,9 +670,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386149672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9265ceb410cb45129a06c11f146d2c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ae7b49821d20408ba07be55581c9ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mass: 14.1999998
+  attracts: 1
 --- !u!58 &1386149674
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -618,8 +684,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .444999993
-  m_Center: {x: 0, y: 0}
+  m_Radius: 4.53000021
+  m_Center: {x: .0500000007, y: .0399999991}
 --- !u!212 &1386149675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -640,7 +706,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9683b8a792d7d4c698822ba42830ef09, type: 3}
+  m_Sprite: {fileID: 21300000, guid: da3b6daaf3e1348ff85ab45c541cc486, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1386149676
 Transform:
@@ -649,8 +715,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1386149672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.80660009, y: -1.47099996, z: 0}
-  m_LocalScale: {x: 3.12692571, y: 3.12692571, z: 3.12692571}
+  m_LocalPosition: {x: -2.80999994, y: -1.47000003, z: 0}
+  m_LocalScale: {x: .21608074, y: .21608074, z: .21608074}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -720,7 +786,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
-  m_SortingLayerID: 0
+  m_SortingLayerID: 3041969811
   m_SortingOrder: 0
 --- !u!1 &1680007203
 GameObject:
@@ -753,9 +819,9 @@ RectTransform:
   - {fileID: 1749278963}
   m_Father: {fileID: 1643838228}
   m_RootOrder: 1
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 65, y: 243.5}
+  m_AnchorMin: {x: .5, y: 1}
+  m_AnchorMax: {x: .5, y: 1}
+  m_AnchoredPosition: {x: 65, y: -36}
   m_SizeDelta: {x: 130, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1680007205
