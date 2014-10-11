@@ -13,16 +13,6 @@ public class Ball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		GameObject[] attractors = GameObject.FindGameObjectsWithTag("Attractor");
-		GameObject[] repellers = GameObject.FindGameObjectsWithTag("Repeller");
-
-		foreach (GameObject attractor in attractors) {
-			Debug.DrawLine ( transform.position, attractor.transform.position, Color.blue );
-		}
-
-		foreach (GameObject repeller in repellers) {
-			Debug.DrawLine ( transform.position, repeller.transform.position, Color.red );
-		}
 
 	}
 }

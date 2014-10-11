@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 69892495}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -1.10000002, z: 0}
+  m_LocalPosition: {x: 2.03789997, y: 3.57599998, z: 0}
   m_LocalScale: {x: 3.41065669, y: 3.41065669, z: 3.41065669}
   m_Children: []
   m_Father: {fileID: 0}
@@ -160,6 +160,7 @@ GameObject:
   - 114: {fileID: 377636781}
   - 58: {fileID: 377636780}
   - 50: {fileID: 377636779}
+  - 96: {fileID: 377636782}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -196,7 +197,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377636776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .479999989, y: .479999989, z: 0}
+  m_LocalPosition: {x: -.462069988, y: 3.26979995, z: -.0504139997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -238,6 +239,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb7d4db4736794bd7ab0df9d49972301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!96 &377636782
+TrailRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377636776}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 1.15999997
+  m_StartWidth: .819999993
+  m_EndWidth: .349999994
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 16777215
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4278190335
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294913024
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4280418048
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 0
+  m_MinVertexDistance: .0700000003
+  m_Autodestruct: 1
 --- !u!1 &833115365
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +342,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.5999999
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -335,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ebf72f53b7374b659a2860737afc3e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneSizeW: 800
-  sceneSizeH: 480
+  sceneSizeW: 18
+  sceneSizeH: 9.60000038
 --- !u!114 &833115372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +459,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1386149672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.58000004, y: 3.5999999, z: 0}
+  m_LocalPosition: {x: -2.80660009, y: -1.47099996, z: 0}
   m_LocalScale: {x: 3.12692571, y: 3.12692571, z: 3.12692571}
   m_Children: []
   m_Father: {fileID: 0}
@@ -432,7 +474,7 @@ GameObject:
   - 4: {fileID: 1482890578}
   - 120: {fileID: 1482890577}
   - 114: {fileID: 1482890576}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ForceArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
