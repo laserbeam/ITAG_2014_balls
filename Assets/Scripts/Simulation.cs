@@ -91,9 +91,9 @@ public class Simulation : MonoBehaviour {
 	void Update () {
 		if (isRunning) {
 			Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+			float mass = body.mass;
 			foreach (GameObject attractor in attractors) {
-				Vector2 dir = (attractor.transform.position - player.transform.position).normalized;
-				dir = attractor.GetComponent<GravitySource>().GetGravityForce( player.transform.position, 10 );
+				Vector2 dir = attractor.GetComponent<GravitySource>().GetGravityForce( player.transform.position, mass );
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[attractor.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
@@ -101,8 +101,7 @@ public class Simulation : MonoBehaviour {
 			}
 
 			foreach (GameObject repeller in repellers) {
-				Vector2 dir = -(repeller.transform.position - player.transform.position).normalized;
-				dir = repeller.GetComponent<GravitySource>().GetGravityForce( player.transform.position, 10 );
+				Vector2 dir = repeller.GetComponent<GravitySource>().GetGravityForce( player.transform.position, mass );
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[repeller.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;

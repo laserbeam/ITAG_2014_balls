@@ -4,6 +4,7 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
 	public Vector2 initialForce = new Vector2(0, 0);
+	public float initialForceMult = 10.0f;
 	
 	// Use this for initialization
 	void Start () {
@@ -13,14 +14,14 @@ public class Ball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.DrawLine ( transform.position, transform.position + new Vector3 ( initialForce.x, initialForce.y ));
+		Debug.DrawLine ( transform.position, transform.position + new Vector3 ( initialForce.x/initialForceMult, initialForce.y/initialForceMult ));
 	}
 
 	void OnMouseDrag () {
 		Vector3 t = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Debug.DrawLine ( transform.position, t );
 		Vector3 dir = t - transform.position;
-		initialForce = new Vector2 ( dir.x, dir.y );
+		initialForce = new Vector2 ( dir.x, dir.y ) * initialForceMult;
 	}
 
 	void OnTriggerEnter2D ( Collider2D coll ) {
