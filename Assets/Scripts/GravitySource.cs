@@ -16,7 +16,6 @@ public class GravitySource : MonoBehaviour {
 	public Vector2 GetGravityForce ( Vector3 otherPosition, float otherMass ) {
 		double r = Vector3.Distance ( transform.position, otherPosition );
 		double f = G * otherMass * mass / ( r * r );
-		Debug.Log ( f );
 		Vector3 dir = (transform.position - otherPosition).normalized * (float)f;
 		if (!attracts) {
 			dir = -dir;

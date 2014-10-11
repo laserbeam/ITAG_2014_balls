@@ -21,4 +21,20 @@ public class Ball : MonoBehaviour {
 		Vector3 dir = t - transform.position;
 		initialForce = new Vector2 ( dir.x, dir.y );
 	}
+
+	void OnTriggerEnter2D ( Collider2D coll ) {
+		Debug.Log ( coll.gameObject.tag );
+		if (coll.gameObject.tag == "Target") {
+			GetComponent<Rigidbody2D>().isKinematic = true;
+			GetComponent<Animator>().SetTrigger("won");
+		}
+	}
+
+	void ResetToStart () {
+		GetComponent<Animator>().SetBool("won", false);
+		Camera.main.GetComponent<Simulation>().ResetSimulation();
+		GetComponent<Rigidbody2D>().isKinematic = false;
+	}
+
+
 }
