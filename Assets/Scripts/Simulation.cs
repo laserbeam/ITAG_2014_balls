@@ -28,7 +28,9 @@ public class Simulation : MonoBehaviour {
 	private GameObject[] repellers;
 	private GameObject player;
 	private Dictionary<int, GameObject> forceArrows;
-
+	private Vector3 initialPlayerPosition;
+	private Quaternion initialPlayerRotation;
+	private Vector3 initialPlayerScale;
 	// Use this for initialization
 	void Start () {
 		isRunning = false;
@@ -39,10 +41,23 @@ public class Simulation : MonoBehaviour {
 		player.GetComponent<Rigidbody2D>().AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
 	}
 
+	public void ResetSimulation () {
+		isRunning = false;
+		player.transform.position = initialPlayerPosition;
+		player.transform.rotation = initialPlayerRotation;
+		player.transform.localScale = initialPlayerScale;
+		TrailRenderer tr = player.GetComponent<TrailRenderer>();
+		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+	}
+
 	void InitObjects () {
 		attractors = GameObject.FindGameObjectsWithTag("Attractor");
 		repellers = GameObject.FindGameObjectsWithTag("Repeller");
 		player = GameObject.FindGameObjectWithTag("Player");
+//		initialPlayerTransform = new Transform();
+		initialPlayerPosition = player.transform.position;
+		initialPlayerRotation = player.transform.rotation;
+		initialPlayerScale = player.transform.localScale;
 		forceArrows = new Dictionary<int, GameObject>();
 		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 
