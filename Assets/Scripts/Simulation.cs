@@ -14,8 +14,11 @@ public class Simulation : MonoBehaviour {
 		set {
 			if (value) {
 				Time.timeScale = 1;
+				camera.cullingMask = ~0;
+				StartSimulation ();
 			} else {
 				Time.timeScale = 0;
+				camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 			}
 			isRunningStorage = value;
 		}
@@ -32,12 +35,16 @@ public class Simulation : MonoBehaviour {
 		InitObjects ();
 	}
 
+	void StartSimulation () {
+		player.GetComponent<Rigidbody2D>().AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
+	}
+
 	void InitObjects () {
 		attractors = GameObject.FindGameObjectsWithTag("Attractor");
 		repellers = GameObject.FindGameObjectsWithTag("Repeller");
 		player = GameObject.FindGameObjectWithTag("Player");
 		forceArrows = new Dictionary<int, GameObject>();
-		isRunning = true;
+		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 
 		foreach (GameObject attractor in attractors) {
 			GameObject forceArrow = (GameObject) GameObject.Instantiate ( forceArrowPrefab, Vector3.zero, Quaternion.identity );
@@ -45,6 +52,7 @@ public class Simulation : MonoBehaviour {
 			forceArrow.transform.position = player.transform.position;
 			forceArrows[attractor.GetInstanceID()] = forceArrow;
 			forceArrow.GetComponent<ForceArrow>().kind = ForceArrow.ForceKind.ATTRACT;
+//			forceArrow.renderer.enabled = false;
 		}
 
 		foreach (GameObject repeller in repellers) {
@@ -53,6 +61,7 @@ public class Simulation : MonoBehaviour {
 			forceArrow.transform.position = player.transform.position;
 			forceArrows[repeller.GetInstanceID()] = forceArrow;
 			forceArrow.GetComponent<ForceArrow>().kind = ForceArrow.ForceKind.REPEL;
+//			forceArrow.renderer.enabled = false;
 		}
 
 	}
