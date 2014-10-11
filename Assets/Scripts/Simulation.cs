@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class Simulation : MonoBehaviour {
 
 	public GameObject forceArrowPrefab;
-	
+
+	private PhysicsOverlay physicsOverlay;
+
 	private bool isRunningStorage = false;
 	public bool isRunning {
 		get {
@@ -15,12 +17,13 @@ public class Simulation : MonoBehaviour {
 			isRunningStorage = value;
 			if (value) {
 				Time.timeScale = 1;
+				physicsOverlay.enabled = false;
 				camera.cullingMask = ~0;
 				Debug.Log ("GO!");
 				StartSimulation ();
 			} else {
 				Time.timeScale = 0;
-				camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
+				physicsOverlay.enabled = true;
 			}
 		}
 	}
@@ -35,6 +38,7 @@ public class Simulation : MonoBehaviour {
 	private Vector3 initialPlayerScale;
 	// Use this for initialization
 	void Start () {
+		physicsOverlay = GetComponent<PhysicsOverlay>();
 		isRunning = false;
 		InitObjects ();
 	}

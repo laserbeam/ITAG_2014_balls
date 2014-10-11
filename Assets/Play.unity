@@ -199,7 +199,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a90138252353a4278aa2ce37577e7336, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16a922a18f30c47c3b1891282992036e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &69892499
 Transform:
@@ -491,6 +491,7 @@ GameObject:
   - 81: {fileID: 833115366}
   - 114: {fileID: 833115371}
   - 114: {fileID: 833115372}
+  - 114: {fileID: 833115373}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -589,6 +590,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forceArrowPrefab: {fileID: 100000, guid: 817a7a9866f8e415f9ac9b1c5c0620c9, type: 2}
   isReset: 1
+--- !u!114 &833115373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 833115365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e7c7db8ccee406b90737646db8c778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1041947257
 GameObject:
   m_ObjectHideFlags: 0
