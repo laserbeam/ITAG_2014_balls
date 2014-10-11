@@ -7,7 +7,8 @@ public class Ball : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		gameObject.GetComponentInChildren<Animation>().Play();
+
 	}
 	
 	// Update is called once per frame
@@ -23,17 +24,29 @@ public class Ball : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D ( Collider2D coll ) {
-		Debug.Log ( coll.gameObject.tag );
 		if (coll.gameObject.tag == "Target") {
 			GetComponent<Rigidbody2D>().isKinematic = true;
+			GetComponent<CircleCollider2D>().enabled = false;
 			GetComponent<Animator>().SetTrigger("won");
 		}
 	}
 
+	void OnCollisionEnter2D ( Collision2D coll ) {
+		string tag = coll.gameObject.tag;
+		if (tag == "Enemy" || tag == "Repeller" || tag == "Attractor") {
+			GetComponent<Rigidbody2D>().isKinematic = true;
+			GetComponent<CircleCollider2D>().enabled = false;
+			GetComponent<Animator>().SetTrigger("death");
+		}
+	}
+
+
 	void ResetToStart () {
-		GetComponent<Animator>().SetBool("won", false);
+		Debug.Log ( "reset was called." );
+		GetComponent<Animator>().SetTrigger("reset");
 		Camera.main.GetComponent<Simulation>().ResetSimulation();
 		GetComponent<Rigidbody2D>().isKinematic = false;
+		GetComponent<CircleCollider2D>().enabled = true;
 	}
 
 
