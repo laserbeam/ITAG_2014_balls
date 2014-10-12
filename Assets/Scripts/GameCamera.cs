@@ -16,8 +16,8 @@ public class GameCamera : MonoBehaviour {
 		GameObject bg = GameObject.FindGameObjectWithTag("Background");
 		Sprite bgsprite = bg.GetComponent<SpriteRenderer>().sprite;
 		Vector3 border = bgsprite.bounds.size;
-		float s1 = sceneSizeW/border[0];
-		float s2 = sceneSizeH/border[1];
+		float s1 = sceneSizeW*1.05f/border[0];
+		float s2 = sceneSizeH*1.05f/border[1];
 		s1 = Mathf.Max ( s1, s2 ) * 2;
 		bg.transform.localScale = new Vector3 ( s1, s1, 0 );
 		ZoomToFitScene ();

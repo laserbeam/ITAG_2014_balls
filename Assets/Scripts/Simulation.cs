@@ -17,8 +17,6 @@ public class Simulation : MonoBehaviour {
 			isRunningStorage = value;
 			if (value) {
 				physicsOverlay.isEnabled = false;
-				camera.cullingMask = ~0;
-				Debug.Log ("GO!");
 				StartSimulation ();
 			} else {
 				physicsOverlay.isEnabled = true;
@@ -58,6 +56,9 @@ public class Simulation : MonoBehaviour {
 		player.transform.localScale = initialPlayerScale;
 		TrailRenderer tr = player.GetComponent<TrailRenderer>();
 		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Bullet")) {
+			Destroy(obj);	
+		}
 	}
 
 	void InitObjects () {
