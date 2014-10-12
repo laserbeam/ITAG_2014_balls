@@ -8,8 +8,6 @@ public class Ball : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		gameObject.GetComponentInChildren<Animation>().Play();
-
 	}
 	
 	// Update is called once per frame

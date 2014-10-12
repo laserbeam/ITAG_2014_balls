@@ -16,13 +16,11 @@ public class Simulation : MonoBehaviour {
 		set {
 			isRunningStorage = value;
 			if (value) {
-				Time.timeScale = 1;
 				physicsOverlay.enabled = false;
 				camera.cullingMask = ~0;
 				Debug.Log ("GO!");
 				StartSimulation ();
 			} else {
-				Time.timeScale = 0;
 				physicsOverlay.enabled = true;
 			}
 		}
@@ -45,7 +43,9 @@ public class Simulation : MonoBehaviour {
 
 	void StartSimulation () {
 		if (isReset) {
-			player.GetComponent<Rigidbody2D>().AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
+			Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+			body.isKinematic = false;
+			body.AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
 			isReset = false;
 		}
 	}
