@@ -330,7 +330,7 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_Events:
   - time: 1
-    functionName: ResetToStart
+    functionName: ResetSimulation
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

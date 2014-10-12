@@ -7,7 +7,6 @@ public class Ball : MonoBehaviour {
 	public float initialForceMult = 10.0f;
 	public float maxInitialForceVector = 50.0f;
 
-	private CircleCollider2D collider;
 	private Rigidbody2D body;
 	private Animator animator;
 	private ForceArrow initialForceArrow;
@@ -15,7 +14,6 @@ public class Ball : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		body = GetComponent<Rigidbody2D>();
-		collider = GetComponent<CircleCollider2D>();
 		animator = GetComponent<Animator>();
 		initialForceArrow = GetComponentInChildren<ForceArrow>();
 	}
@@ -37,8 +35,7 @@ public class Ball : MonoBehaviour {
 
 	void OnTriggerEnter2D ( Collider2D coll ) {
 		if (coll.gameObject.tag == "Target") {
-			body.isKinematic = true;
-			collider.enabled = false;
+			body.simulated = false;
 			animator.SetTrigger("won");
 		}
 	}
@@ -51,18 +48,27 @@ public class Ball : MonoBehaviour {
 	}
 
 	public void Kill() {
-		body.isKinematic = true;
-		collider.enabled = false;
+		body.velocity = Vector2.zero;
+		body.simulated = false;
 		animator.SetTrigger("death");
 	}
 
-	void ResetToStart () {
-		Debug.Log ( "reset was called." );
+	public void ResetSimulation () {
 		Camera.main.GetComponent<Simulation>().ResetSimulation();
-		body.isKinematic = false;
-		collider.enabled = true;
+	}
+
+	public void ResetToStart () {
+		body.simulated = true;
+		body.isKinematic = true;
+		body.velocity = Vector2.zero;
 		animator.SetTrigger("reset");
 	}
 
+	public void Freeze() {
+		body.simulated = false;
+	}
 
+	public void Unfreeze() {
+		body.simulated = false;
+	}
 }
