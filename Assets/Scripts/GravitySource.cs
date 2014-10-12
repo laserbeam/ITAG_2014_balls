@@ -7,10 +7,11 @@ public class GravitySource : MonoBehaviour {
 
 	public float mass = 10;
 	public bool attracts = true;
+	public float scaleToMassRatio = 10.0f;
 
 	// Use this for initialization
 	void Start () {
-	
+		mass = transform.localScale.x * scaleToMassRatio;
 	}
 
 	public Vector2 GetGravityForce ( Vector3 otherPosition, float otherMass ) {

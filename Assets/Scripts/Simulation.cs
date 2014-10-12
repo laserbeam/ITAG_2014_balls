@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Simulation : MonoBehaviour {
 
 	public GameObject forceArrowPrefab;
+	public GameObject UICanvas;
 
 	private PhysicsOverlay physicsOverlay;
 
@@ -42,6 +43,7 @@ public class Simulation : MonoBehaviour {
 	void StartSimulation () {
 		if (isReset) {
 			Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+			body.simulated = true;
 			body.isKinematic = false;
 			body.AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
 			isReset = false;
@@ -51,14 +53,14 @@ public class Simulation : MonoBehaviour {
 	public void ResetSimulation () {
 		isRunning = false;
 		isReset = true;
+		player.GetComponent<Ball>().ResetToStart();
 		player.transform.position = initialPlayerPosition;
 		player.transform.rotation = initialPlayerRotation;
 		player.transform.localScale = initialPlayerScale;
-		TrailRenderer tr = player.GetComponent<TrailRenderer>();
-		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Bullet")) {
 			Destroy(obj);	
 		}
+		UICanvas.GetComponent<IngameUI>().SetPlayVisible();
 	}
 
 	void InitObjects () {
@@ -70,7 +72,7 @@ public class Simulation : MonoBehaviour {
 		initialPlayerRotation = player.transform.rotation;
 		initialPlayerScale = player.transform.localScale;
 		forceArrows = new Dictionary<int, GameObject>();
-		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
+//		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 
 		foreach (GameObject attractor in attractors) {
 			GameObject forceArrow = (GameObject) GameObject.Instantiate ( forceArrowPrefab, Vector3.zero, Quaternion.identity );

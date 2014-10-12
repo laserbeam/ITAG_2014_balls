@@ -30,9 +30,9 @@ public class ForceArrow : MonoBehaviour {
 		set {
 			kindStorage = value;
 			if (value == ForceKind.ATTRACT) {
-				GetComponent<LineRenderer>().SetColors ( attractColor, Color.white );
+				GetComponent<LineRenderer>().SetColors ( attractColor, attractColor * 1.3f );
 			} else if (value == ForceKind.REPEL) {
-				GetComponent<LineRenderer>().SetColors ( repelColor, Color.white );
+				GetComponent<LineRenderer>().SetColors ( repelColor, repelColor * 1.3f );
 			}
 		}
 	}
