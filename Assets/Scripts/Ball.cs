@@ -12,9 +12,9 @@ public class Ball : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-//		GetComponent<Rigidbody2D>().isKinematic = true;
-//		GetComponent<CircleCollider2D>().enabled = false;
-//		GetComponent<Animator>().SetTrigger("won");
+		body = GetComponent<Rigidbody2D>();
+		collider = GetComponent<CircleCollider2D>();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -31,9 +31,9 @@ public class Ball : MonoBehaviour {
 
 	void OnTriggerEnter2D ( Collider2D coll ) {
 		if (coll.gameObject.tag == "Target") {
-			GetComponent<Rigidbody2D>().isKinematic = true;
-			GetComponent<CircleCollider2D>().enabled = false;
-			GetComponent<Animator>().SetTrigger("won");
+			body.isKinematic = true;
+			collider.enabled = false;
+			animator.SetTrigger("won");
 		}
 	}
 
@@ -45,17 +45,17 @@ public class Ball : MonoBehaviour {
 	}
 
 	public void Kill() {
-		GetComponent<Rigidbody2D>().isKinematic = true;
-		GetComponent<CircleCollider2D>().enabled = false;
-		GetComponent<Animator>().SetTrigger("death");
+		body.isKinematic = true;
+		collider.enabled = false;
+		animator.SetTrigger("death");
 	}
 
 	void ResetToStart () {
 		Debug.Log ( "reset was called." );
-		GetComponent<Animator>().SetTrigger("reset");
 		Camera.main.GetComponent<Simulation>().ResetSimulation();
-		GetComponent<Rigidbody2D>().isKinematic = false;
-		GetComponent<CircleCollider2D>().enabled = true;
+		body.isKinematic = false;
+		collider.enabled = true;
+		animator.SetTrigger("reset");
 	}
 
 

@@ -1484,7 +1484,6 @@ GameObject:
   - 114: {fileID: 377636781}
   - 58: {fileID: 377636780}
   - 50: {fileID: 377636779}
-  - 96: {fileID: 377636782}
   - 95: {fileID: 377636783}
   - 82: {fileID: 377636784}
   m_Layer: 0
@@ -1569,47 +1568,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialForce: {x: 0, y: 0}
   initialForceMult: 10
---- !u!96 &377636782
-TrailRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 377636776}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Time: 1.15999997
-  m_StartWidth: .819999993
-  m_EndWidth: .349999994
-  m_Colors:
-    m_Color[0]:
-      serializedVersion: 2
-      rgba: 16777215
-    m_Color[1]:
-      serializedVersion: 2
-      rgba: 4278190335
-    m_Color[2]:
-      serializedVersion: 2
-      rgba: 4294913024
-    m_Color[3]:
-      serializedVersion: 2
-      rgba: 4280418048
-    m_Color[4]:
-      serializedVersion: 2
-      rgba: 0
-  m_MinVertexDistance: .0700000003
-  m_Autodestruct: 1
 --- !u!95 &377636783
 Animator:
   serializedVersion: 3
