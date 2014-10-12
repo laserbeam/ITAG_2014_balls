@@ -73,4 +73,7 @@ public class GameCamera : MonoBehaviour {
 			MoveCamera(Vector3.zero);
 		}
 	}
+
+	public void Shake ( Vector2 impulse ) {
+	}
 }

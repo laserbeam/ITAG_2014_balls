@@ -33,6 +33,7 @@ public class Simulation : MonoBehaviour {
 	private Vector3 initialPlayerPosition;
 	private Quaternion initialPlayerRotation;
 	private Vector3 initialPlayerScale;
+
 	// Use this for initialization
 	void Start () {
 		physicsOverlay = GetComponent<PhysicsOverlay>();
@@ -42,6 +43,7 @@ public class Simulation : MonoBehaviour {
 
 	void StartSimulation () {
 		if (isReset) {
+			physicsOverlay.SpawnTrail ();
 			Rigidbody2D body = player.GetComponent<Rigidbody2D>();
 			body.simulated = true;
 			body.isKinematic = false;
@@ -72,7 +74,7 @@ public class Simulation : MonoBehaviour {
 		initialPlayerRotation = player.transform.rotation;
 		initialPlayerScale = player.transform.localScale;
 		forceArrows = new Dictionary<int, GameObject>();
-//		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
+		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 
 		foreach (GameObject attractor in attractors) {
 			GameObject forceArrow = (GameObject) GameObject.Instantiate ( forceArrowPrefab, Vector3.zero, Quaternion.identity );
@@ -101,7 +103,7 @@ public class Simulation : MonoBehaviour {
 				Vector2 dir = attractor.GetComponent<GravitySource>().GetGravityForce( player.transform.position, mass );
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[attractor.GetInstanceID()].GetComponent<ForceArrow>();
-				arrow.force = dir;
+				arrow.force = dir/5;
 //				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 
@@ -109,7 +111,8 @@ public class Simulation : MonoBehaviour {
 				Vector2 dir = repeller.GetComponent<GravitySource>().GetGravityForce( player.transform.position, mass );
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[repeller.GetInstanceID()].GetComponent<ForceArrow>();
-				arrow.force = dir;
+				arrow.force = dir/5;
+				Debug.Log(dir + " " + LayerMask.LayerToName( arrow.gameObject.layer));
 //				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 		}

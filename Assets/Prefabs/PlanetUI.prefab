@@ -10,7 +10,7 @@ GameObject:
   - 224: {fileID: 22400000}
   - 222: {fileID: 22200000}
   - 114: {fileID: 11400000}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: MassText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ GameObject:
   - 224: {fileID: 22400002}
   - 222: {fileID: 22200002}
   - 114: {fileID: 11400002}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: MassTextBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - 224: {fileID: 22400004}
   - 222: {fileID: 22200004}
   - 114: {fileID: 11400006}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - 224: {fileID: 22400006}
   - 223: {fileID: 22300000}
   - 114: {fileID: 11400004}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: FGCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - 224: {fileID: 22400008}
   - 223: {fileID: 22300002}
   - 114: {fileID: 11400008}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: BGCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 22400010}
   - 114: {fileID: 11400010}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: PlanetUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
