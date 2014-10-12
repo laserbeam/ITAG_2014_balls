@@ -19,6 +19,7 @@ public class PlanetUIController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		massField = transform.Find("FGCanvas/MassText").GetComponent<Text>();
+
 	}
 	
 	// Update is called once per frame
@@ -29,6 +30,10 @@ public class PlanetUIController : MonoBehaviour {
 	void SetPlanet() {
 		massField = transform.Find("FGCanvas/MassText").GetComponent<Text>();
 		massField.text = "Mass\n" + planetStorage.mass;
-		transform.position = planetStorage.transform.position;
+		Transform ptransform = planetStorage.transform;
+		transform.position = ptransform.position;
+		float s = ptransform.localScale.x;
+		transform.Find("BGCanvas/BG").localScale = ptransform.localScale;
+		transform.Find("FGCanvas").GetComponent<RectTransform>().sizeDelta = new Vector2(s, s);
 	}
 }
