@@ -70,7 +70,7 @@ public class Simulation : MonoBehaviour {
 		initialPlayerRotation = player.transform.rotation;
 		initialPlayerScale = player.transform.localScale;
 		forceArrows = new Dictionary<int, GameObject>();
-		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
+//		camera.cullingMask = ~(1 << LayerMask.NameToLayer ("PhysicsOverlay"));
 
 		foreach (GameObject attractor in attractors) {
 			GameObject forceArrow = (GameObject) GameObject.Instantiate ( forceArrowPrefab, Vector3.zero, Quaternion.identity );

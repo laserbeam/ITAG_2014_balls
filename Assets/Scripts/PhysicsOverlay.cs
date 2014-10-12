@@ -4,7 +4,11 @@ using System.Collections;
 public class PhysicsOverlay : MonoBehaviour {
 
 	public GameObject planetUIPrefab;
-	private bool enabledStorage = false;
+	public GameObject ballTrailPrefab;
+	public GameObject forceFieldRepelPrefab;
+	public GameObject forceFieldAttractPrefab;
+
+	private bool enabledStorage = true;
 	public bool isEnabled {
 		get {
 			return enabledStorage;
@@ -24,10 +28,14 @@ public class PhysicsOverlay : MonoBehaviour {
 		foreach (var obj in GameObject.FindGameObjectsWithTag("Attractor")) {
 			GameObject stuff = (GameObject) GameObject.Instantiate ( planetUIPrefab );
 			stuff.GetComponent<PlanetUIController>().planet = obj.GetComponent<GravitySource>();
+			stuff = (GameObject) GameObject.Instantiate ( forceFieldAttractPrefab );
+			stuff.transform.position = obj.transform.position + Vector3.back;
 		}
 		foreach (var obj in GameObject.FindGameObjectsWithTag("Repeller")) {
 			GameObject stuff = (GameObject) GameObject.Instantiate ( planetUIPrefab );
 			stuff.GetComponent<PlanetUIController>().planet = obj.GetComponent<GravitySource>();
+			stuff = (GameObject) GameObject.Instantiate ( forceFieldRepelPrefab );
+			stuff.transform.position = obj.transform.position + Vector3.back;
 		}
 	}
 
