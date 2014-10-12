@@ -16,12 +16,12 @@ public class Simulation : MonoBehaviour {
 		set {
 			isRunningStorage = value;
 			if (value) {
-				physicsOverlay.enabled = false;
+				physicsOverlay.isEnabled = false;
 				camera.cullingMask = ~0;
 				Debug.Log ("GO!");
 				StartSimulation ();
 			} else {
-				physicsOverlay.enabled = true;
+				physicsOverlay.isEnabled = true;
 			}
 		}
 	}
@@ -77,7 +77,6 @@ public class Simulation : MonoBehaviour {
 			forceArrow.transform.position = player.transform.position;
 			forceArrows[attractor.GetInstanceID()] = forceArrow;
 			forceArrow.GetComponent<ForceArrow>().kind = ForceArrow.ForceKind.ATTRACT;
-//			forceArrow.renderer.enabled = false;
 		}
 
 		foreach (GameObject repeller in repellers) {
@@ -86,7 +85,6 @@ public class Simulation : MonoBehaviour {
 			forceArrow.transform.position = player.transform.position;
 			forceArrows[repeller.GetInstanceID()] = forceArrow;
 			forceArrow.GetComponent<ForceArrow>().kind = ForceArrow.ForceKind.REPEL;
-//			forceArrow.renderer.enabled = false;
 		}
 
 	}
@@ -101,7 +99,7 @@ public class Simulation : MonoBehaviour {
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[attractor.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
-				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
+//				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 
 			foreach (GameObject repeller in repellers) {
@@ -109,7 +107,7 @@ public class Simulation : MonoBehaviour {
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[repeller.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
-				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
+//				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 		}
 	}

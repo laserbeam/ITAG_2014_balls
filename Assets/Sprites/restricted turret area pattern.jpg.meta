@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: cdbb5e46392f44a43a33ab501c57da55
+guid: f10e527bd40f04751be2b2d93b6f858c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ship base
+    21300000: restricted turret area pattern
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,12 +23,12 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 128
+  maxTextureSize: 256
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50

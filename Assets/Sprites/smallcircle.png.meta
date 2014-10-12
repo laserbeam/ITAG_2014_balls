@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: cdbb5e46392f44a43a33ab501c57da55
+guid: b2e142499366f431e8282a7eb32af19c
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ship base
+    21300000: smallcircle
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -23,7 +23,7 @@ TextureImporter:
   generateCubemap: 0
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 128
+  maxTextureSize: 1024
   textureSettings:
     filterMode: -1
     aniso: -1

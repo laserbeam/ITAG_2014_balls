@@ -19,7 +19,6 @@ public class PlanetUIController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		massField = transform.Find("FGCanvas/MassText").GetComponent<Text>();
-		Debug.Log ( "creating planet UI: " + massField );
 	}
 	
 	// Update is called once per frame
@@ -29,8 +28,6 @@ public class PlanetUIController : MonoBehaviour {
 
 	void SetPlanet() {
 		massField = transform.Find("FGCanvas/MassText").GetComponent<Text>();
-//		Debug.Log ( "planet: " + planetStorage + planetStorage.mass );
-//		Debug.Log ( "textfield: " + massField );
 		massField.text = "Mass\n" + planetStorage.mass;
 		transform.position = planetStorage.transform.position;
 	}
