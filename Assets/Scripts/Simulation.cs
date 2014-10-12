@@ -16,14 +16,10 @@ public class Simulation : MonoBehaviour {
 		set {
 			isRunningStorage = value;
 			if (value) {
-				Time.timeScale = 1;
-				physicsOverlay.enabled = false;
-				camera.cullingMask = ~0;
-				Debug.Log ("GO!");
+				physicsOverlay.isEnabled = false;
 				StartSimulation ();
 			} else {
-				Time.timeScale = 0;
-				physicsOverlay.enabled = true;
+				physicsOverlay.isEnabled = true;
 			}
 		}
 	}
@@ -45,7 +41,9 @@ public class Simulation : MonoBehaviour {
 
 	void StartSimulation () {
 		if (isReset) {
-			player.GetComponent<Rigidbody2D>().AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
+			Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+			body.isKinematic = false;
+			body.AddForce ( player.GetComponent<Ball>().initialForce, ForceMode2D.Impulse );
 			isReset = false;
 		}
 	}
@@ -58,6 +56,9 @@ public class Simulation : MonoBehaviour {
 		player.transform.localScale = initialPlayerScale;
 		TrailRenderer tr = player.GetComponent<TrailRenderer>();
 		player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Bullet")) {
+			Destroy(obj);	
+		}
 	}
 
 	void InitObjects () {
@@ -77,7 +78,6 @@ public class Simulation : MonoBehaviour {
 			forceArrow.transform.position = player.transform.position;
 			forceArrows[attractor.GetInstanceID()] = forceArrow;
 			forceArrow.GetComponent<ForceArrow>().kind = ForceArrow.ForceKind.ATTRACT;
-//			forceArrow.renderer.enabled = false;
 		}
 
 		foreach (GameObject repeller in repellers) {
@@ -86,7 +86,6 @@ public class Simulation : MonoBehaviour {
 			forceArrow.transform.position = player.transform.position;
 			forceArrows[repeller.GetInstanceID()] = forceArrow;
 			forceArrow.GetComponent<ForceArrow>().kind = ForceArrow.ForceKind.REPEL;
-//			forceArrow.renderer.enabled = false;
 		}
 
 	}
@@ -101,7 +100,7 @@ public class Simulation : MonoBehaviour {
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[attractor.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
-				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
+//				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 
 			foreach (GameObject repeller in repellers) {
@@ -109,7 +108,7 @@ public class Simulation : MonoBehaviour {
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[repeller.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir;
-				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
+//				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 		}
 	}
