@@ -112,7 +112,6 @@ public class Simulation : MonoBehaviour {
 				body.AddForce( dir, ForceMode2D.Force );
 				ForceArrow arrow = forceArrows[repeller.GetInstanceID()].GetComponent<ForceArrow>();
 				arrow.force = dir/5;
-				Debug.Log(dir + " " + LayerMask.LayerToName( arrow.gameObject.layer));
 //				Vector3 dir3 = new Vector3 ( dir.x, dir.y );
 			}
 		}

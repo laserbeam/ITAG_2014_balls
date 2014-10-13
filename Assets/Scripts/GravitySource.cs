@@ -24,9 +24,6 @@ public class GravitySource : MonoBehaviour {
 		return new Vector2 ( dir.x, dir.y );
 	}
 
-	void OnCollisionEnter2D ( Collision2D coll ) {
-		Camera.main.GetComponent<GameCamera>().Shake();
-	}
 
 	// Update is called once per frame
 	void Update () {

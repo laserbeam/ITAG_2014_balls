@@ -20,7 +20,6 @@ public class SpringController : MonoBehaviour {
 				anim.SetTrigger("fire");
 			}
 			audio.Play();
-			Camera.main.GetComponent<GameCamera>().Shake(0.25f);
 		}
 	}
 }

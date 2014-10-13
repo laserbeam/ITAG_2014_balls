@@ -57,7 +57,6 @@ public class GameCamera : MonoBehaviour {
 	}
 
 	void ZoomToFitScene () {
-		Debug.Log ( camera.aspect );
 		float aspect = Screen.width / (float)Screen.height;
 		float w2 = sceneSizeW / aspect;
 		camera.orthographicSize = Mathf.Min ( sceneSizeH, w2 );
