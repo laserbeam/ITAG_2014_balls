@@ -15,6 +15,9 @@ public class Ball : MonoBehaviour {
 	private Color baseColor;
 	private Vector3 oldPos;
 
+	private Vector3 zoomTarget;
+	private bool isZooming;
+
 	// Use this for initialization
 	void Start () {
 		body = GetComponent<Rigidbody2D>();
@@ -27,6 +30,9 @@ public class Ball : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (isZooming) {
+			transform.position = Vector3.Lerp ( transform.position, zoomTarget, 5*Time.deltaTime );
+		}
 	}
 
 	void OnMouseDrag () {
@@ -42,6 +48,8 @@ public class Ball : MonoBehaviour {
 	void OnTriggerEnter2D ( Collider2D coll ) {
 		if (coll.gameObject.tag == "Target") {
 			body.simulated = false;
+			isZooming = true;
+			zoomTarget = coll.gameObject.transform.position;
 			animator.SetTrigger("won");
 		}
 	}
@@ -70,6 +78,7 @@ public class Ball : MonoBehaviour {
 	public void ResetToStart () {
 		body.simulated = true;
 		body.isKinematic = true;
+		isZooming = false;
 		body.velocity = Vector2.zero;
 		animator.SetTrigger("reset");
 	}
