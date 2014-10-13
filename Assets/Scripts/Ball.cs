@@ -11,16 +11,22 @@ public class Ball : MonoBehaviour {
 	private Animator animator;
 	private ForceArrow initialForceArrow;
 
+	private SpriteRenderer cabinRenderer;
+	private Color baseColor;
+	private Vector3 oldPos;
+
 	// Use this for initialization
 	void Start () {
 		body = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 		initialForceArrow = GetComponentInChildren<ForceArrow>();
+		cabinRenderer = transform.Find("ship cabin").GetComponent<SpriteRenderer>();
+		baseColor = cabinRenderer.color;
+		oldPos = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-//		Debug.DrawLine ( transform.position, transform.position + new Vector3 ( initialForce.x/initialForceMult, initialForce.y/initialForceMult ));
 	}
 
 	void OnMouseDrag () {
@@ -43,6 +49,7 @@ public class Ball : MonoBehaviour {
 	void OnCollisionEnter2D ( Collision2D coll ) {
 		string tag = coll.gameObject.tag;
 		if (tag == "Enemy" || tag == "Repeller" || tag == "Attractor") {
+			Kill();
 			Camera.main.GetComponent<GameCamera>().Shake();
 		} else if (tag == "Spring") {
 			Camera.main.GetComponent<GameCamera>().Shake(0.2f);
@@ -56,6 +63,7 @@ public class Ball : MonoBehaviour {
 	}
 
 	public void ResetSimulation () {
+		Debug.Log ("Called");
 		Camera.main.GetComponent<Simulation>().ResetSimulation();
 	}
 
