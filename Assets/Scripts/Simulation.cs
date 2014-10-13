@@ -63,6 +63,15 @@ public class Simulation : MonoBehaviour {
 			Destroy(obj);	
 		}
 		UICanvas.GetComponent<IngameUI>().SetPlayVisible();
+
+		foreach (GameObject attractor in attractors) {
+			attractor.GetComponent<GravitySource>().Reset();
+		}
+		
+		foreach (GameObject repeller in repellers) {
+			repeller.GetComponent<GravitySource>().Reset();
+		}
+
 	}
 
 	void InitObjects () {

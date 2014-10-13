@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: dcb0edd125a9f4f49969b4cca19f50df
+guid: 5b82ba3112aaf4880952cb154793259e
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: poster logo
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0

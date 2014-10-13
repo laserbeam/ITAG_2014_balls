@@ -12,11 +12,15 @@ public class Ball : MonoBehaviour {
 	private ForceArrow initialForceArrow;
 
 	private SpriteRenderer cabinRenderer;
+	private SpriteRenderer baseRenderer;
+	private SpriteRenderer renderer;
 	private Color baseColor;
 	private Vector3 oldPos;
 
 	private Vector3 zoomTarget;
 	private bool isZooming;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +28,8 @@ public class Ball : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		initialForceArrow = GetComponentInChildren<ForceArrow>();
 		cabinRenderer = transform.Find("ship cabin").GetComponent<SpriteRenderer>();
+		baseRenderer = transform.Find("ship base").GetComponent<SpriteRenderer>();
+		renderer = GetComponent<SpriteRenderer>();
 		baseColor = cabinRenderer.color;
 		oldPos = transform.position;
 	}
@@ -33,6 +39,9 @@ public class Ball : MonoBehaviour {
 		if (isZooming) {
 			transform.position = Vector3.Lerp ( transform.position, zoomTarget, 5*Time.deltaTime );
 		}
+
+		baseRenderer.color = renderer.color;
+		cabinRenderer.color = renderer.color;
 	}
 
 	void OnMouseDrag () {
@@ -50,6 +59,7 @@ public class Ball : MonoBehaviour {
 			body.simulated = false;
 			isZooming = true;
 			zoomTarget = coll.gameObject.transform.position;
+			coll.gameObject.audio.Play();
 			animator.SetTrigger("won");
 		}
 	}
@@ -59,12 +69,14 @@ public class Ball : MonoBehaviour {
 		if (tag == "Enemy" || tag == "Repeller" || tag == "Attractor") {
 			Kill();
 			Camera.main.GetComponent<GameCamera>().Shake();
+			coll.gameObject.GetComponent<GravitySource>().Shake(-coll.contacts[0].normal);
 		} else if (tag == "Spring") {
 			Camera.main.GetComponent<GameCamera>().Shake(0.2f);
 		}
 	}
 
 	public void Kill() {
+		audio.Play();
 		body.velocity = Vector2.zero;
 		body.simulated = false;
 		animator.SetTrigger("death");
