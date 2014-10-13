@@ -29,7 +29,7 @@ public class PlanetUIController : MonoBehaviour {
 
 	void SetPlanet() {
 		massField = transform.Find("FGCanvas/MassText").GetComponent<Text>();
-		massField.text = "Mass\n" + planetStorage.mass;
+		massField.text = "Mass\n" + planetStorage.mass.ToString("#.00");
 		Transform ptransform = planetStorage.transform;
 		transform.position = ptransform.position;
 		float s = ptransform.localScale.x;

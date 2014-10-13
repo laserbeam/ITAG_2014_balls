@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Ball : MonoBehaviour {
 
 	public Vector2 initialForce = new Vector2(0, 0);
 	public float initialForceMult = 10.0f;
 	public float maxInitialForceVector = 50.0f;
+	public static string[] levels = {"Level7","Level1","Level3","Level4","Level5","Level6","Level2","Victory"};
 
 	private Rigidbody2D body;
 	private Animator animator;
@@ -85,6 +87,12 @@ public class Ball : MonoBehaviour {
 	public void ResetSimulation () {
 		Debug.Log ("Called");
 		Camera.main.GetComponent<Simulation>().ResetSimulation();
+	}
+
+	public void NextLevel () {
+		string current = Application.loadedLevelName;
+		int idx = Array.IndexOf(levels, current);
+		Application.LoadLevel( levels[idx+1] );
 	}
 
 	public void ResetToStart () {

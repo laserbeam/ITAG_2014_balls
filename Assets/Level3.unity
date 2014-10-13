@@ -189,18 +189,18 @@ AudioSource:
   m_GameObject: {fileID: 47565440}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: 6a5ade40b5dda4d61ad9f432475455ff, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6f3c3d32a41c44056b93254560bc55f0, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Priority: 134
+  Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 30
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -477,7 +477,7 @@ Transform:
   m_PrefabInternal: {fileID: 969113733}
   m_GameObject: {fileID: 192213950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.8563}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 47565441}
@@ -568,6 +568,7 @@ GameObject:
   - 4: {fileID: 238160343}
   - 212: {fileID: 238160345}
   - 58: {fileID: 238160344}
+  - 82: {fileID: 238160346}
   m_Layer: 0
   m_Name: Target
   m_TagString: Target
@@ -623,6 +624,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b1252a9e464184cda91ae8582ae39f61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &238160346
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: d251208866fc94ff58a09d9ae418d4f9,
+    type: 2}
+  m_PrefabInternal: {fileID: 973168027}
+  m_GameObject: {fileID: 238160342}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 6a5ade40b5dda4d61ad9f432475455ff, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 30
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: .683333337
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &292384427
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +708,7 @@ Transform:
   m_PrefabInternal: {fileID: 969113733}
   m_GameObject: {fileID: 292384427}
   m_LocalRotation: {x: 0, y: 0, z: -.000976562442, w: .999999523}
-  m_LocalPosition: {x: 0, y: 0, z: .0504139997}
+  m_LocalPosition: {x: 0, y: 0, z: -2.15840006}
   m_LocalScale: {x: .103013903, y: .103013881, z: .103013881}
   m_Children: []
   m_Father: {fileID: 47565441}
@@ -1160,7 +1220,7 @@ Prefab:
       objectReference: {fileID: 1554647079}
     - target: {fileID: 11400000, guid: ebf90be730a32432da41712d3b5bc845, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_isRunning
+      value: Pause
       objectReference: {fileID: 0}
     - target: {fileID: 11400012, guid: ebf90be730a32432da41712d3b5bc845, type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4391,7 +4451,7 @@ Transform:
   m_PrefabInternal: {fileID: 969113733}
   m_GameObject: {fileID: 1557409289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.12189996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 47565441}
@@ -4604,7 +4664,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4286221468
+        rgba: 2876935324
       minMaxState: 0
     startSize:
       scalar: 1
@@ -5872,8 +5932,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1554647079}
-        m_MethodName: set_isRunning
-        m_Mode: 6
+        m_MethodName: Pause
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -6109,7 +6169,7 @@ Transform:
   m_PrefabInternal: {fileID: 969113733}
   m_GameObject: {fileID: 2045701871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -.25999999}
+  m_LocalPosition: {x: 0, y: 0, z: -2.42700005}
   m_LocalScale: {x: .0851845965, y: .0851846188, z: .0851846188}
   m_Children: []
   m_Father: {fileID: 47565441}

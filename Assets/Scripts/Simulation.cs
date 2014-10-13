@@ -17,6 +17,7 @@ public class Simulation : MonoBehaviour {
 		set {
 			isRunningStorage = value;
 			if (value) {
+				Time.timeScale = 1;
 				physicsOverlay.isEnabled = false;
 				StartSimulation ();
 			} else {
@@ -39,6 +40,11 @@ public class Simulation : MonoBehaviour {
 		physicsOverlay = GetComponent<PhysicsOverlay>();
 		isRunning = false;
 		InitObjects ();
+	}
+
+	public void Pause () {
+		Time.timeScale = 0;
+		isRunning = false;
 	}
 
 	void StartSimulation () {

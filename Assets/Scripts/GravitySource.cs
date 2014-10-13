@@ -5,7 +5,7 @@ public class GravitySource : MonoBehaviour {
 
 	public static double G = 0.667;
 
-	public float mass = 10;
+	public float mass;
 	public bool attracts = true;
 	public float scaleToMassRatio = 10.0f;
 
