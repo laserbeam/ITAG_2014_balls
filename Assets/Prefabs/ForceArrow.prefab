@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0c653f7ab2244f6aba305050fc04504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractColor: {r: .286764681, g: .527789116, b: 1, a: 0}
-  repelColor: {r: 1, g: 0, b: 0, a: 0}
+  attractColor: {r: .286764681, g: .527789116, b: 1, a: 1}
+  repelColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!120 &12000000
 LineRenderer:
   m_ObjectHideFlags: 1

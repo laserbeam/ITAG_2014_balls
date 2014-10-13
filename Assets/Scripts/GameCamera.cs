@@ -10,6 +10,12 @@ public class GameCamera : MonoBehaviour {
 	private int _oldHeight;
 
 	private float maxOrtographicSize;
+	private Vector3 originalPos;
+	private float shake = 0f;
+
+	public float shakeAmount = 0.7f;
+	public float maxShake = 0.7f;
+	public float decreaseFactor = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +57,6 @@ public class GameCamera : MonoBehaviour {
 	}
 
 	void ZoomToFitScene () {
-		Debug.Log ( camera.aspect );
 		float aspect = Screen.width / (float)Screen.height;
 		float w2 = sceneSizeW / aspect;
 		camera.orthographicSize = Mathf.Min ( sceneSizeH, w2 );
@@ -72,5 +77,24 @@ public class GameCamera : MonoBehaviour {
 			camera.orthographicSize = Mathf.Max ( s, 1 );
 			MoveCamera(Vector3.zero);
 		}
+
+		if (shake > 0) {
+			transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+			shakeAmount *= 0.9f;
+			shake -= Time.deltaTime * decreaseFactor;
+		} else {
+			shake = 0;
+			originalPos = transform.localPosition;
+		}
+	}
+
+	public void Shake () {
+		Shake ( maxShake );
+	}
+
+	public void Shake ( float strength ) {
+		shake = 0.7f;
+		shakeAmount = strength;
+		originalPos = transform.localPosition;
 	}
 }

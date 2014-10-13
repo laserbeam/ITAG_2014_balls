@@ -11,7 +11,7 @@ TagManager:
   - Enemy
   - Turret
   - Bullet
-  - 
+  - Spring
   - 
   - 
   - 
@@ -34,7 +34,7 @@ TagManager:
   User Layer 8: PhysicsOverlay
   User Layer 9: Background
   User Layer 10: Helper
-  User Layer 11: 
+  User Layer 11: PauseOverlay
   User Layer 12: 
   User Layer 13: 
   User Layer 14: 

@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceArrowPrefab: {fileID: 100000, guid: 817a7a9866f8e415f9ac9b1c5c0620c9, type: 2}
+  UICanvas: {fileID: 0}
   isReset: 1
 --- !u!114 &11400004
 MonoBehaviour:
@@ -176,8 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e7c7db8ccee406b90737646db8c778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetUIPrefab: {fileID: 100000, guid: b735a014f106d4d8a8b98dff4b961077, type: 2}
-  ballTrailPrefab: {fileID: 0}
+  planetUIPrefab: {fileID: 100010, guid: b735a014f106d4d8a8b98dff4b961077, type: 2}
+  ballTrailPrefab: {fileID: 100000, guid: d9f32480bd0324cb4ba8a8c788a001a3, type: 2}
+  forceFieldRepelPrefab: {fileID: 100002, guid: d2d820913810645cba983cce9ad732ad,
+    type: 2}
+  forceFieldAttractPrefab: {fileID: 100002, guid: 045532452bcb3421fadecaa10bbe54ff,
+    type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

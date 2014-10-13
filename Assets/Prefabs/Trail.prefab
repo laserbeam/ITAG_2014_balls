@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a94d70f817948c1a1e4ee1312f3b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dotSpacing: .200000003
+  dotSpacing: .25
   dotPrefab: {fileID: 100000, guid: af04426d58c3d477cbff5e17006648e3, type: 2}
   isTracing: 1
 --- !u!223 &22300000

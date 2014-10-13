@@ -43,7 +43,9 @@ public class Ball : MonoBehaviour {
 	void OnCollisionEnter2D ( Collision2D coll ) {
 		string tag = coll.gameObject.tag;
 		if (tag == "Enemy" || tag == "Repeller" || tag == "Attractor") {
-			Kill();
+			Camera.main.GetComponent<GameCamera>().Shake();
+		} else if (tag == "Spring") {
+			Camera.main.GetComponent<GameCamera>().Shake(0.2f);
 		}
 	}
 

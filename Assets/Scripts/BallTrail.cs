@@ -33,4 +33,13 @@ public class BallTrail : MonoBehaviour {
 			lastPos = pos;
 		}
 	}
+
+	public void SetAlpha ( float alpha ) {
+		Color c = Color.white;
+		c.a = alpha;
+		foreach ( SpriteRenderer s in transform.GetComponentsInChildren<SpriteRenderer>()) {
+			s.color = c;
+		}
+	}
+	
 }

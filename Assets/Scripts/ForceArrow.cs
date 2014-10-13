@@ -30,9 +30,9 @@ public class ForceArrow : MonoBehaviour {
 		set {
 			kindStorage = value;
 			if (value == ForceKind.ATTRACT) {
-				GetComponent<LineRenderer>().SetColors ( attractColor, attractColor * 1.3f );
+				GetComponent<LineRenderer>().SetColors ( attractColor, attractColor * 2f );
 			} else if (value == ForceKind.REPEL) {
-				GetComponent<LineRenderer>().SetColors ( repelColor, repelColor * 1.3f );
+				GetComponent<LineRenderer>().SetColors ( repelColor, repelColor * 2f );
 			}
 		}
 	}
@@ -44,6 +44,7 @@ public class ForceArrow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Vector3 s = transform.parent.localScale;
+		transform.localScale = new Vector3 ( 1/s.x, 1/s.y, 1/s.z );
 	}
 }
