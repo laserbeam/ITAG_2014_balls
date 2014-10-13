@@ -17,6 +17,7 @@ public class Simulation : MonoBehaviour {
 		set {
 			isRunningStorage = value;
 			if (value) {
+				Time.timeScale = 1;
 				physicsOverlay.isEnabled = false;
 				StartSimulation ();
 			} else {
@@ -41,6 +42,11 @@ public class Simulation : MonoBehaviour {
 		InitObjects ();
 	}
 
+	public void Pause () {
+		Time.timeScale = 0;
+		isRunning = false;
+	}
+
 	void StartSimulation () {
 		if (isReset) {
 			physicsOverlay.SpawnTrail ();
@@ -63,6 +69,15 @@ public class Simulation : MonoBehaviour {
 			Destroy(obj);	
 		}
 		UICanvas.GetComponent<IngameUI>().SetPlayVisible();
+
+		foreach (GameObject attractor in attractors) {
+			attractor.GetComponent<GravitySource>().Reset();
+		}
+		
+		foreach (GameObject repeller in repellers) {
+			repeller.GetComponent<GravitySource>().Reset();
+		}
+
 	}
 
 	void InitObjects () {

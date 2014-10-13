@@ -22,12 +22,14 @@ public class BallTrail : MonoBehaviour {
 		if (isTracing) {
 			Vector3 pos = ball.transform.position;
 			float d = Vector3.Distance(pos, lastPos);
-			if (distMade + d > dotSpacing) {
+			float k = distMade + d;
+			while (k > dotSpacing) {
 				Vector3 target = Vector3.Lerp ( lastPos, pos, d/dotSpacing );
 				GameObject dot = (GameObject) GameObject.Instantiate ( dotPrefab );
 				dot.transform.parent = transform;
 				dot.transform.position = target;
 				distMade -= dotSpacing;
+				k = k - dotSpacing;
 			}
 			distMade += d;
 			lastPos = pos;

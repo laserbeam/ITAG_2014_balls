@@ -9,7 +9,7 @@ public class StartGame : MonoBehaviour {
 	}
 
 	public void StartTheGame () {
-		Application.LoadLevel ( "Play" );
+		Application.LoadLevel ( "Level2" );
 	}
 
 	// Update is called once per frame

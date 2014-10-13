@@ -3,9 +3,11 @@ using System.Collections;
 
 public class SpringController : MonoBehaviour {
 
+	private ParticleSystem ps;
+
 	// Use this for initialization
 	void Start () {
-	
+		ps = GetComponentInChildren<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +22,9 @@ public class SpringController : MonoBehaviour {
 				anim.SetTrigger("fire");
 			}
 			audio.Play();
+			Vector2 point = coll.contacts[0].point;
+			ps.transform.position = new Vector3 ( point.x, point.y, 0 );
+			ps.Play();
 		}
 	}
 }

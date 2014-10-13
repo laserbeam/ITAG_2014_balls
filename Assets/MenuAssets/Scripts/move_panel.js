@@ -8,7 +8,7 @@ public function PlayCredits () {
 }   
 
 public function StartGame(){
-  	Application.LoadLevel("Play");
+  	Application.LoadLevel("Level7");
 }
 
 public function NoQuit(){
