@@ -54,6 +54,7 @@ public class Ball : MonoBehaviour {
 	}
 
 	public void ResetSimulation () {
+		Debug.Log ( Camera.main.GetComponent<Simulation> ());
 		Camera.main.GetComponent<Simulation>().ResetSimulation();
 	}
 
